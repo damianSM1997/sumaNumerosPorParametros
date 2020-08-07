@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
+form {
+    width: 300px;
+    padding: 16px;
+    border-radius: 10px;
+    margin: auto;
+    background-color: rgb(181, 221, 236));
+}
+
+body {
+    background-image: url(../img/fondo.jpg);
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    /* fallback for old browsers 
+      background: #000428;
+    background: -webkit-linear-gradient(to right, #004e92, #000428);  
+background: linear-gradient(to right, #004e92, #000428); 
+    */
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <script type="text/javascript">
+        function obtenerDatos() {
+            let combineNum = Number(document.getElementById('sumas').value);
+            //let edad = parseFloat(document.getElementById('edad').value);
+            let areglo = document.getElementById('areglo').value;
+            const areglo2 = areglo.split(',')
+            let nums = areglo2.map(arr => {
+                return Number(arr);
+            });
+            let sum = Number(document.getElementById('deseado').value);
+
+            console.log(nums)
+
+
+            const sums = [];
+            nums.map((num, i) => { //corresponde a el numero e i al indice
+                for (let index = i; index < nums.length; index++) { //ciclo que termina hasta la ultima posision del areglo                    
+                    if (index + combineNum > nums.length)
+                        return
+                    const slicedArray = nums.slice(index + 1, index + combineNum); //recorre el areglo y lo guarda a la variable slicedArray            
+                    const tempSum = slicedArray.reduce((pre, current) => pre + current, num); //parte que hace las interaciones iterador acumulativo y ahí 
+                    //uso el numero actual como valor inicial y luego voy sumando 
+                    //todos los restantes del slice,                    
+
+                    if (sum == tempSum) { // compara y guarda los valores 
+                        sums.push([
+                            "(",
+                            num,
+                            ...slicedArray,
+                            ") "
+                        ])
+                    }
+                }
+            })
+
+            console.log(sums)
+
+            document.registro.arregloObtenido.value = nums;
+            document.registro.sumasObtenido.value = combineNum;
+            document.registro.deseadoObtenido.value = sum;
+            document.registro.resultado.value = sums;
+
+        }
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Hecho por Damian</h1>
+    <form name="registro">
+        <table border="1">
+            <tr>
+                <td>Areglo: </td>
+                <td><input type="text" name="areglo" id="areglo"></td>
+            </tr>
+            <tr>
+                <td>No° de sumas: </td>
+                <td><input type="text" name="sumas" id="sumas"></td>
+            </tr>
+            <tr>
+                <td>No° deseado: </td>
+                <td><input type="text" name="deseado" id="deseado"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="button" name="btn1" value="Enviar" onclick="obtenerDatos()"></td>
+            </tr>
+        </table><br><br><br>
+
+        <table border="1">
+            <tr>
+                <td>Tu areglo es : </td>
+                <td><input type="text" name="arregloObtenido" id="arregloObtenido"></td>
+            </tr>
+            <tr>
+                <td>No° de sumas: </td>
+                <td><input type="text" name="sumasObtenido" id="sumasObtenido"></td>
+            </tr>
+            <tr>
+                <td>No° de deseado: </td>
+                <td><input type="text" name="deseadoObtenido" id="deseadoObtenido"></td>
+            </tr>
+
+            <tr>
+                <td>Resultado: </td>
+                <td><input type="text" name="resultado" id="resultado"></td>
+            </tr>
+
+        </table>
+    </form>
+
+</body>
+
+</html>
